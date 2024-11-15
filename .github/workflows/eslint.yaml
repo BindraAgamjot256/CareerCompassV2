@@ -32,7 +32,6 @@ jobs:
 
       - name: Install ESLint
         run: |
-          npm install eslint@8.10.0
           npm install @microsoft/eslint-formatter-sarif@3.1.0
           npm install -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-prettier prettier globals @tauri-apps/cli @tauri-apps/api
       - name: Run ESLint
