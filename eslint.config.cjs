@@ -65,15 +65,6 @@ module.exports = [
 
       // General rules
       'no-console': ['warn', { allow: ['warn', 'error'] }],
-      'prettier/prettier': ['error', {
-        singleQuote: true,
-        semi: true,
-        tabWidth: 2,
-        trailingComma: 'es5',
-        printWidth: 80,
-        bracketSpacing: true,
-        arrowParens: 'avoid',
-      }],
     },
   },
   // Override for TypeScript files
