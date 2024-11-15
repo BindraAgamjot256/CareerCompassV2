@@ -30,6 +30,8 @@ jobs:
         continue-on-error: true
       - name: Push
         run: |
+              git config --global user.email "ajs.bindra@proton.me"
+              git config --global user.name "BindraAgamjot256"
               git add .
               git commit -m "ESLinted push"
               git push
