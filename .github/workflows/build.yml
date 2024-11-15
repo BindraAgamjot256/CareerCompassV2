@@ -1,0 +1,22 @@
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: add deps
+        run: yarn
+        continue-on-error: false
+      - name: build(WEB)
+        run: yarn run build
+      - name: Deploy to GH pages
+        run: yarn add gh-pages -D && yarn run deploy
