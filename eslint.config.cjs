@@ -4,7 +4,6 @@ const typescript = require('@typescript-eslint/eslint-plugin');
 const typescriptParser = require('@typescript-eslint/parser');
 const react = require('eslint-plugin-react');
 const reactHooks = require('eslint-plugin-react-hooks');
-const prettier = require('eslint-plugin-prettier');
 
 module.exports = [
   // Base configuration for all files
@@ -43,7 +42,6 @@ module.exports = [
       '@typescript-eslint': typescript,
       'react': react,
       'react-hooks': reactHooks,
-      'prettier': prettier,
     },
     settings: {
       react: {
