@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "homepage": "https://BindraAgamjot256.github.io/CareerCompassV2",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@tauri-apps/api": "^2",
