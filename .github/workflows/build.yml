@@ -18,5 +18,10 @@ jobs:
         continue-on-error: false
       - name: build(WEB)
         run: yarn run build
+      - name: set Git creds
+        run: |
+          git config --global user.email "ajs.bindra@proton.me"\
+          && git config --global user.name "BindraAgamjot256"
       - name: Deploy to GH pages
+
         run: yarn add gh-pages -D && yarn run deploy
