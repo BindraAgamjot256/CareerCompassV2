@@ -26,8 +26,13 @@ jobs:
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: |
-          npx eslint . 
+          npx eslint . --fix 
         continue-on-error: true
+      - name: Push
+        run: |
+              git add .
+              git commit -m "ESLinted push"
+              git push
 
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3
