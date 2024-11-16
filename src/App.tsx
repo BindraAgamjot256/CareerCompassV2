@@ -1,17 +1,32 @@
-import { useState } from "react";
+import {useState} from "react";
 import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
+import {invoke} from "@tauri-apps/api/core";
+import {confirm as C} from '@tauri-apps/plugin-dialog';
 import isTauri from './isTauri'
-import "./App.css";
+import "./App.css"
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+    const [greetMsg, setGreetMsg] = useState("")
+    const [name, setName] = useState("")
 
   async function greet() {
-
-    setGreetMsg(isTauri ? await invoke("greet", { name }): "Hello, ! You've been greeted from Rust!, "+name );
+      setGreetMsg(isTauri ? await invoke("greet", {name}) : "Hello! You've been greeted from JS!, " + name)
   }
+
+    async function dialog() {
+        let confirmation: boolean
+        if (isTauri) {
+            confirmation = await C(
+                'This action cannot be reverted. Are you sure?',
+                {title: 'Tauri', kind: 'warning'}
+            )
+        } else {
+            confirmation = confirm(
+                'This action cannot be reverted. Are you sure?'
+            )
+        }
+        console.log(confirmation);
+    }
 
 
   return (
@@ -34,8 +49,8 @@ function App() {
       <form
         className="row"
         onSubmit={(e) => {
-          e.preventDefault();
-          greet();
+            e.preventDefault()
+            greet()
         }}
       >
         <input
@@ -45,6 +60,7 @@ function App() {
         />
         <button type="submit">Greet</button>
       </form>
+        <button type={"button"} onClick={dialog}>Show msg</button>
       <p>{greetMsg}</p>
     </main>
   );
